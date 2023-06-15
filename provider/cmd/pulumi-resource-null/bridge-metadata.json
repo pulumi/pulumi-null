@@ -1,0 +1,27 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "null_resource": {
+                "current": "null:index/resource:Resource"
+            }
+        },
+        "datasources": {
+            "null_data_source": {
+                "current": "null:index/getDataSource:getDataSource"
+            }
+        }
+    },
+    "renames": {
+        "resources": {
+            "null:index/resource:Resource": "null_resource"
+        },
+        "functions": {
+            "null:index/getDataSource:getDataSource": "null_data_source"
+        },
+        "renamedProperties": {
+            "null:index/getDataSource:getDataSource": {
+                "hasComputedDefault": "has_computed_default"
+            }
+        }
+    }
+}

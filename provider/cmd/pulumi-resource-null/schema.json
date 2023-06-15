@@ -1,0 +1,151 @@
+{
+    "name": "null",
+    "displayName": "Null",
+    "description": "A Pulumi package for creating and managing Null cloud resources.",
+    "keywords": [
+        "pulumi",
+        "category/cloud"
+    ],
+    "homepage": "https://www.pulumi.com/",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`null` Terraform Provider](https://github.com/terraform-providers/terraform-provider-null).",
+    "repository": "https://github.com/pulumi/pulumi-null",
+    "publisher": "Pulumi",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-null/sdk/go/null"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/node": "^16.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing Null cloud resources.",
+            "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-null)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-null` repo](https://github.com/pulumi/pulumi-null/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-null` repo](https://github.com/terraform-providers/terraform-provider-null/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-null)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-null` repo](https://github.com/pulumi/pulumi-null/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-null` repo](https://github.com/terraform-providers/terraform-provider-null/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    },
+    "config": {},
+    "provider": {
+        "description": "The provider type for the null package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n"
+    },
+    "resources": {
+        "null:index/resource:Resource": {
+            "properties": {
+                "triggers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.\n"
+                }
+            },
+            "inputProperties": {
+                "triggers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Resource resources.\n",
+                "properties": {
+                    "triggers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "null:index/getDataSource:getDataSource": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getDataSource.\n",
+                "properties": {
+                    "hasComputedDefault": {
+                        "type": "string",
+                        "description": "If set, its literal value will be stored and returned. If not, its value defaults to `\"default\"`. This argument exists primarily for testing and has little practical use.\n"
+                    },
+                    "inputs": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDataSource.\n",
+                "properties": {
+                    "hasComputedDefault": {
+                        "type": "string",
+                        "description": "If set, its literal value will be stored and returned. If not, its value defaults to `\"default\"`. This argument exists primarily for testing and has little practical use.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.\n",
+                        "deprecationMessage": "This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version."
+                    },
+                    "inputs": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.\n"
+                    },
+                    "outputs": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "After the data source is \"read\", a copy of the `inputs` map.\n"
+                    },
+                    "random": {
+                        "type": "string",
+                        "description": "A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "hasComputedDefault",
+                    "id",
+                    "outputs",
+                    "random"
+                ]
+            }
+        }
+    }
+}
