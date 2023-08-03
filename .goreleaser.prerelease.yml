@@ -14,7 +14,7 @@ blobs:
   provider: s3
   region: us-west-2
 builds:
-- binary: pulumi-resource-null
+- binary: pulumi-resource-<no value>
   dir: provider
   env:
   - CGO_ENABLED=0
@@ -26,10 +26,14 @@ builds:
   - darwin
   - windows
   - linux
+  hooks:
+    post:
+    - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -cache
+    - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -modcache
   ignore: []
   ldflags:
   - -X github.com/pulumi/pulumi-null/provider/pkg/version.Version={{.Tag}}
-  main: ./cmd/pulumi-resource-null/
+  main: ./cmd/pulumi-resource-<no value>/
 changelog:
   skip: true
 release:
