@@ -27,10 +27,6 @@ class GetDataSourceResult:
         pulumi.set(__self__, "has_computed_default", has_computed_default)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        if id is not None:
-            warnings.warn("""This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.""", DeprecationWarning)
-            pulumi.log.warn("""id is deprecated: This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.""")
-
         pulumi.set(__self__, "id", id)
         if inputs and not isinstance(inputs, dict):
             raise TypeError("Expected argument 'inputs' to be a dict")
@@ -56,6 +52,9 @@ class GetDataSourceResult:
         """
         This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.
         """
+        warnings.warn("""This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.""", DeprecationWarning)
+        pulumi.log.warn("""id is deprecated: This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.""")
+
         return pulumi.get(self, "id")
 
     @property
@@ -112,11 +111,11 @@ def get_data_source(has_computed_default: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('null:index/getDataSource:getDataSource', __args__, opts=opts, typ=GetDataSourceResult).value
 
     return AwaitableGetDataSourceResult(
-        has_computed_default=__ret__.has_computed_default,
-        id=__ret__.id,
-        inputs=__ret__.inputs,
-        outputs=__ret__.outputs,
-        random=__ret__.random)
+        has_computed_default=pulumi.get(__ret__, 'has_computed_default'),
+        id=pulumi.get(__ret__, 'id'),
+        inputs=pulumi.get(__ret__, 'inputs'),
+        outputs=pulumi.get(__ret__, 'outputs'),
+        random=pulumi.get(__ret__, 'random'))
 
 
 @_utilities.lift_output_func(get_data_source)
