@@ -27,7 +27,9 @@ class ResourceArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if triggers is not None:
             _setter("triggers", triggers)
 
@@ -60,7 +62,9 @@ class _ResourceState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if triggers is not None:
             _setter("triggers", triggers)
 
