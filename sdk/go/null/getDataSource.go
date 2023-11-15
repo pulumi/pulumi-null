@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-null/sdk/go/null/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetDataSource(ctx *pulumi.Context, args *GetDataSourceArgs, opts ...pulumi.InvokeOption) (*GetDataSourceResult, error) {
@@ -84,12 +83,6 @@ func (o GetDataSourceResultOutput) ToGetDataSourceResultOutput() GetDataSourceRe
 
 func (o GetDataSourceResultOutput) ToGetDataSourceResultOutputWithContext(ctx context.Context) GetDataSourceResultOutput {
 	return o
-}
-
-func (o GetDataSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDataSourceResult] {
-	return pulumix.Output[GetDataSourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If set, its literal value will be stored and returned. If not, its value defaults to `"default"`. This argument exists primarily for testing and has little practical use.
