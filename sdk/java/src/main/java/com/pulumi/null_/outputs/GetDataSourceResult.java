@@ -132,13 +132,13 @@ public final class GetDataSourceResult {
             return this;
         }
         public GetDataSourceResult build() {
-            final var o = new GetDataSourceResult();
-            o.hasComputedDefault = hasComputedDefault;
-            o.id = id;
-            o.inputs = inputs;
-            o.outputs = outputs;
-            o.random = random;
-            return o;
+            final var _resultValue = new GetDataSourceResult();
+            _resultValue.hasComputedDefault = hasComputedDefault;
+            _resultValue.id = id;
+            _resultValue.inputs = inputs;
+            _resultValue.outputs = outputs;
+            _resultValue.random = random;
+            return _resultValue;
         }
     }
 }
