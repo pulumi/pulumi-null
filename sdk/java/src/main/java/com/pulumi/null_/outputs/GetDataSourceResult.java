@@ -4,6 +4,7 @@
 package com.pulumi.null_.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -108,27 +109,40 @@ public final class GetDataSourceResult {
 
         @CustomType.Setter
         public Builder hasComputedDefault(String hasComputedDefault) {
-            this.hasComputedDefault = Objects.requireNonNull(hasComputedDefault);
+            if (hasComputedDefault == null) {
+              throw new MissingRequiredPropertyException("GetDataSourceResult", "hasComputedDefault");
+            }
+            this.hasComputedDefault = hasComputedDefault;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDataSourceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder inputs(@Nullable Map<String,String> inputs) {
+
             this.inputs = inputs;
             return this;
         }
         @CustomType.Setter
         public Builder outputs(Map<String,String> outputs) {
-            this.outputs = Objects.requireNonNull(outputs);
+            if (outputs == null) {
+              throw new MissingRequiredPropertyException("GetDataSourceResult", "outputs");
+            }
+            this.outputs = outputs;
             return this;
         }
         @CustomType.Setter
         public Builder random(String random) {
-            this.random = Objects.requireNonNull(random);
+            if (random == null) {
+              throw new MissingRequiredPropertyException("GetDataSourceResult", "random");
+            }
+            this.random = random;
             return this;
         }
         public GetDataSourceResult build() {
