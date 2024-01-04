@@ -11,6 +11,7 @@
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "null:index/resource:Resource": "null_resource"
