@@ -16,14 +16,12 @@ package provider
 
 import (
 	_ "embed" // Embed bridge metadata
-	"fmt"
 	"path"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-null/provider/pkg/version"
 )
@@ -76,18 +74,8 @@ func Provider() tfbridge.ProviderInfo {
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Pulumi",
-		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
-		// if this package is published there.
-		//
-		// You may host a logo on a domain you control or add an SVG logo for your package
-		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "",
-		// PluginDownloadURL is an optional URL used to download the Provider
-		// for use in Pulumi programs
-		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "",
-		Description:       "A Pulumi package for creating and managing Null cloud resources.",
+		Publisher:   "Pulumi",
+		Description: "A Pulumi package for creating and managing Null cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
@@ -97,16 +85,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/pulumi/pulumi-null",
 		// The GitHub Org hosting the upstream provider - defaults to `terraform-providers`. Note that
 		// this should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "terraform-providers",
-		Config:    map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, this provides structured docs for configuration.
-			// "mode": {
-			//  Default: &tfbridge.DefaultInfo{
-			//    EnvVars: []string{"NULL_MODE"}, // Multiple vars can be used
-			//    Value:   "local",
-			//  },
-			// },
-		},
+		GitHubOrg:            "terraform-providers",
 		PreConfigureCallback: preConfigureCallback,
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -141,18 +120,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	err := x.ComputeDefaults(
-		&prov,
-		x.TokensSingleModule(
-			fmt.Sprintf("%s_", providerName),
-			"index",
-			x.MakeStandardToken(providerName),
-		),
-	)
-	contract.AssertNoErrorf(err, "Failed to compute defaults")
+	prov.MustComputeTokens(tokens.SingleModule(providerName+"_", "index",
+		tokens.MakeStandard(providerName)))
 
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "Failed to apply aliasing")
+	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")
 
