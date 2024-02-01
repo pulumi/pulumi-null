@@ -134,8 +134,7 @@
                         "description": "After the data source is \"read\", a copy of the `inputs` map.\n"
                     },
                     "random": {
-                        "type": "string",
-                        "description": "A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object",
