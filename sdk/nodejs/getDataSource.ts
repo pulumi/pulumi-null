@@ -50,9 +50,6 @@ export interface GetDataSourceResult {
      * After the data source is "read", a copy of the `inputs` map.
      */
     readonly outputs: {[key: string]: string};
-    /**
-     * A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.
-     */
     readonly random: string;
 }
 export function getDataSourceOutput(args?: GetDataSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataSourceResult> {
