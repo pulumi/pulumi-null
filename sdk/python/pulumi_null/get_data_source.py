@@ -76,9 +76,6 @@ class GetDataSourceResult:
     @property
     @pulumi.getter
     def random(self) -> str:
-        """
-        A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.
-        """
         return pulumi.get(self, "random")
 
 
