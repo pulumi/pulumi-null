@@ -36,10 +36,6 @@ public final class GetDataSourceResult {
      * 
      */
     private Map<String,String> outputs;
-    /**
-     * @return A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.
-     * 
-     */
     private String random;
 
     private GetDataSourceResult() {}
@@ -75,10 +71,6 @@ public final class GetDataSourceResult {
     public Map<String,String> outputs() {
         return this.outputs;
     }
-    /**
-     * @return A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.
-     * 
-     */
     public String random() {
         return this.random;
     }

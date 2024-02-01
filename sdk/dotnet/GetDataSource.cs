@@ -91,9 +91,6 @@ namespace Pulumi.Null
         /// After the data source is "read", a copy of the `inputs` map.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Outputs;
-        /// <summary>
-        /// A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.
-        /// </summary>
         public readonly string Random;
 
         [OutputConstructor]
