@@ -21,8 +21,6 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	"github.com/pulumi/pulumi-null/provider/pkg/version"
 )
@@ -33,32 +31,6 @@ var metadata []byte
 const providerName = "null"
 
 var pkgVersion = version.Version
-
-// TODO: preConfigureCallback validates configuration to provide actionable errors. This is
-// generally needed when the upstream provider does not provide high quality error messages.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	// stringValue := func(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) (string, error) {
-	// 	val, ok := vars[prop]
-	// 	if ok && val.IsString() {
-	// 		return val.StringValue(), nil
-	// 	}
-	// 	for _, env := range envs {
-	// 		val, ok := os.LookupEnv(env)
-	// 		if ok {
-	// 			return val, nil
-	// 		}
-	// 	}
-	// 	return "", fmt.Errorf("provider configuration %s:%s and env vars %v not defined", providerName, prop, envs)
-	// }
-
-	// _, err := stringValue(vars, "token", []string{"NULL_TOKEN"})
-
-	// if err != nil {
-	// 	return fmt.Errorf("failed to configure API token: %w", err)
-	// }
-
-	return nil
-}
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
@@ -86,8 +58,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/pulumi/pulumi-null",
 		// The GitHub Org hosting the upstream provider - defaults to `terraform-providers`. Note that
 		// this should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg:            "terraform-providers",
-		PreConfigureCallback: preConfigureCallback,
+		GitHubOrg: "terraform-providers",
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
