@@ -14,21 +14,45 @@ import com.pulumi.null_.outputs.GetDataSourceResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class NullFunctions {
+    /**
+     * ## Example Usage
+     * 
+     */
     public static Output<GetDataSourceResult> getDataSource() {
         return getDataSource(GetDataSourceArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     */
     public static CompletableFuture<GetDataSourceResult> getDataSourcePlain() {
         return getDataSourcePlain(GetDataSourcePlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     */
     public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args) {
         return getDataSource(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     */
     public static CompletableFuture<GetDataSourceResult> getDataSourcePlain(GetDataSourcePlainArgs args) {
         return getDataSourcePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     */
     public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("null:index/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     */
     public static CompletableFuture<GetDataSourceResult> getDataSourcePlain(GetDataSourcePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("null:index/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
     }

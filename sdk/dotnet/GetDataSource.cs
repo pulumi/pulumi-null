@@ -11,9 +11,15 @@ namespace Pulumi.Null
 {
     public static class GetDataSource
     {
+        /// <summary>
+        /// ## Example Usage
+        /// </summary>
         public static Task<GetDataSourceResult> InvokeAsync(GetDataSourceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataSourceResult>("null:index/getDataSource:getDataSource", args ?? new GetDataSourceArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// </summary>
         public static Output<GetDataSourceResult> Invoke(GetDataSourceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDataSourceResult>("null:index/getDataSource:getDataSource", args ?? new GetDataSourceInvokeArgs(), options.WithDefaults());
     }
