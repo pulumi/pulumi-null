@@ -55,6 +55,7 @@
     },
     "resources": {
         "null:index/resource:Resource": {
+            "description": "## Example Usage\n\n",
             "properties": {
                 "triggers": {
                     "type": "object",
@@ -90,6 +91,7 @@
     },
     "functions": {
         "null:index/getDataSource:getDataSource": {
+            "description": "## Example Usage\n\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDataSource.\n",
                 "properties": {
