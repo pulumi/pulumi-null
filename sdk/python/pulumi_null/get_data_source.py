@@ -96,7 +96,8 @@ def get_data_source(has_computed_default: Optional[str] = None,
                     inputs: Optional[Mapping[str, str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataSourceResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
 
     :param str has_computed_default: If set, its literal value will be stored and returned. If not, its value defaults to `"default"`. This argument exists primarily for testing and has little practical use.
     :param Mapping[str, str] inputs: A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.
@@ -120,7 +121,8 @@ def get_data_source_output(has_computed_default: Optional[pulumi.Input[Optional[
                            inputs: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataSourceResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
 
     :param str has_computed_default: If set, its literal value will be stored and returned. If not, its value defaults to `"default"`. This argument exists primarily for testing and has little practical use.
     :param Mapping[str, str] inputs: A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.
