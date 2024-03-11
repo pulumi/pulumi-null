@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Null
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [NullResourceType("null:index/resource:Resource")]
     public partial class Resource : global::Pulumi.CustomResource
     {
