@@ -15,6 +15,10 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * 
+ */
 @ResourceType(type="null:index/resource:Resource")
 public class Resource extends com.pulumi.resources.CustomResource {
     /**

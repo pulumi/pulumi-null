@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ */
 export function getDataSource(args?: GetDataSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetDataSourceResult> {
     args = args || {};
 
@@ -52,6 +55,9 @@ export interface GetDataSourceResult {
     readonly outputs: {[key: string]: string};
     readonly random: string;
 }
+/**
+ * ## Example Usage
+ */
 export function getDataSourceOutput(args?: GetDataSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataSourceResult> {
     return pulumi.output(args).apply((a: any) => getDataSource(a, opts))
 }
