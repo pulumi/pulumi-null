@@ -6,6 +6,37 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as _null from "@pulumi/null";
+ * import * as aws from "@pulumi/aws";
+ * import * as std from "@pulumi/std";
+ *
+ * const cluster: aws.index.Instance[] = [];
+ * for (const range = {value: 0}; range.value < 3; range.value++) {
+ *     cluster.push(new aws.index.Instance(`cluster-${range.value}`, {
+ *         ami: "ami-0dcc1e21636832c5d",
+ *         instanceType: "m5.large",
+ *     }));
+ * }
+ * // The primary use-case for the null resource is as a do-nothing container
+ * // for arbitrary actions taken by a provisioner.
+ * //
+ * // In this example, three EC2 instances are created and then a
+ * // null_resource instance is used to gather data about all three
+ * // and execute a single action that affects them all. Due to the triggers
+ * // map, the null_resource will be replaced each time the instance ids
+ * // change, and thus the remote-exec provisioner will be re-run.
+ * const clusterResource = new _null.Resource("cluster", {triggers: {
+ *     cluster_instance_ids: std.join({
+ *         separator: ",",
+ *         input: cluster.map(__item => __item.id),
+ *     }).then(invoke => invoke.result),
+ * }});
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Resource extends pulumi.CustomResource {
     /**

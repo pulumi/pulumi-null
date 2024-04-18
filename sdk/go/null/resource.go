@@ -12,6 +12,68 @@ import (
 )
 
 // ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v1/go/aws"
+//	"github.com/pulumi/pulumi-null/sdk/go/null"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// var cluster []*index.Instance
+//
+//	for index := 0; index < 3; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := index.NewInstance(ctx, fmt.Sprintf("cluster-%v", key0), &index.InstanceArgs{
+// Ami: "ami-0dcc1e21636832c5d",
+// InstanceType: "m5.large",
+// })
+// if err != nil {
+// return err
+// }
+// cluster = append(cluster, __res)
+// }
+// invokeJoin, err := std.Join(ctx, var splat0 []interface{}
+// for _, val0 := range cluster {
+// splat0 = append(splat0, val0.Id)
+// }
+// &std.JoinArgs{
+// Separator: ",",
+// Input: splat0,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// // The primary use-case for the null resource is as a do-nothing container
+// // for arbitrary actions taken by a provisioner.
+// //
+// // In this example, three EC2 instances are created and then a
+// // null_resource instance is used to gather data about all three
+// // and execute a single action that affects them all. Due to the triggers
+// // map, the null_resource will be replaced each time the instance ids
+// // change, and thus the remote-exec provisioner will be re-run.
+// _, err = null.NewResource(ctx, "cluster", &null.ResourceArgs{
+// Triggers: pulumi.StringMap{
+// "cluster_instance_ids": invokeJoin.Result,
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+// <!--End PulumiCodeChooser -->
 type Resource struct {
 	pulumi.CustomResourceState
 

@@ -69,6 +69,33 @@ class Resource(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_null as null
+        import pulumi_std as std
+
+        cluster = []
+        for range in [{"value": i} for i in range(0, 3)]:
+            cluster.append(aws.index.Instance(f"cluster-{range['value']}",
+                ami=ami-0dcc1e21636832c5d,
+                instance_type=m5.large))
+        # The primary use-case for the null resource is as a do-nothing container
+        # for arbitrary actions taken by a provisioner.
+        #
+        # In this example, three EC2 instances are created and then a
+        # null_resource instance is used to gather data about all three
+        # and execute a single action that affects them all. Due to the triggers
+        # map, the null_resource will be replaced each time the instance ids
+        # change, and thus the remote-exec provisioner will be re-run.
+        cluster_resource = null.Resource("cluster", triggers={
+            "cluster_instance_ids": std.join(separator=",",
+                input=[__item["id"] for __item in cluster]).result,
+        })
+        ```
+        <!--End PulumiCodeChooser -->
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] triggers: A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
@@ -81,6 +108,33 @@ class Resource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_null as null
+        import pulumi_std as std
+
+        cluster = []
+        for range in [{"value": i} for i in range(0, 3)]:
+            cluster.append(aws.index.Instance(f"cluster-{range['value']}",
+                ami=ami-0dcc1e21636832c5d,
+                instance_type=m5.large))
+        # The primary use-case for the null resource is as a do-nothing container
+        # for arbitrary actions taken by a provisioner.
+        #
+        # In this example, three EC2 instances are created and then a
+        # null_resource instance is used to gather data about all three
+        # and execute a single action that affects them all. Due to the triggers
+        # map, the null_resource will be replaced each time the instance ids
+        # change, and thus the remote-exec provisioner will be re-run.
+        cluster_resource = null.Resource("cluster", triggers={
+            "cluster_instance_ids": std.join(separator=",",
+                input=[__item["id"] for __item in cluster]).result,
+        })
+        ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ResourceArgs args: The arguments to use to populate this resource's properties.
