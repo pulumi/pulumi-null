@@ -11,6 +11,51 @@ namespace Pulumi.Null
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using Null = Pulumi.Null;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster = new List&lt;Aws.Index.Instance&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         cluster.Add(new Aws.Index.Instance($"cluster-{range.Value}", new()
+    ///         {
+    ///             Ami = "ami-0dcc1e21636832c5d",
+    ///             InstanceType = "m5.large",
+    ///         }));
+    ///     }
+    ///     // The primary use-case for the null resource is as a do-nothing container
+    ///     // for arbitrary actions taken by a provisioner.
+    ///     //
+    ///     // In this example, three EC2 instances are created and then a
+    ///     // null_resource instance is used to gather data about all three
+    ///     // and execute a single action that affects them all. Due to the triggers
+    ///     // map, the null_resource will be replaced each time the instance ids
+    ///     // change, and thus the remote-exec provisioner will be re-run.
+    ///     var clusterResource = new Null.Resource("cluster", new()
+    ///     {
+    ///         Triggers = 
+    ///         {
+    ///             { "cluster_instance_ids", Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = ",",
+    ///                 Input = cluster.Select(__item =&gt; __item.Id).ToList(),
+    ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [NullResourceType("null:index/resource:Resource")]
     public partial class Resource : global::Pulumi.CustomResource

@@ -18,6 +18,59 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aws.instance;
+ * import com.pulumi.aws.InstanceArgs;
+ * import com.pulumi.null.Resource;
+ * import com.pulumi.null.ResourceArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         for (var i = 0; i &lt; 3; i++) {
+ *             new Instance(&#34;cluster-&#34; + i, InstanceArgs.builder()            
+ *                 .ami(&#34;ami-0dcc1e21636832c5d&#34;)
+ *                 .instanceType(&#34;m5.large&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         // The primary use-case for the null resource is as a do-nothing container
+ *         // for arbitrary actions taken by a provisioner.
+ *         //
+ *         // In this example, three EC2 instances are created and then a
+ *         // null_resource instance is used to gather data about all three
+ *         // and execute a single action that affects them all. Due to the triggers
+ *         // map, the null_resource will be replaced each time the instance ids
+ *         // change, and thus the remote-exec provisioner will be re-run.
+ *         var clusterResource = new Resource(&#34;clusterResource&#34;, ResourceArgs.builder()        
+ *             .triggers(Map.of(&#34;cluster_instance_ids&#34;, StdFunctions.join(JoinArgs.builder()
+ *                 .separator(&#34;,&#34;)
+ *                 .input(cluster.stream().map(element -&gt; element.id()).collect(toList()))
+ *                 .build()).result()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="null:index/resource:Resource")
 public class Resource extends com.pulumi.resources.CustomResource {
