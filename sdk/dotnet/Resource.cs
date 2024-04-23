@@ -12,7 +12,6 @@ namespace Pulumi.Null
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.Null
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [NullResourceType("null:index/resource:Resource")]
     public partial class Resource : global::Pulumi.CustomResource
