@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,10 +44,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         for (var i = 0; i &lt; 3; i++) {
- *             new Instance(&#34;cluster-&#34; + i, InstanceArgs.builder()            
- *                 .ami(&#34;ami-0dcc1e21636832c5d&#34;)
- *                 .instanceType(&#34;m5.large&#34;)
+ *         for (var i = 0; i < 3; i++) {
+ *             new Instance("cluster-" + i, InstanceArgs.builder()            
+ *                 .ami("ami-0dcc1e21636832c5d")
+ *                 .instanceType("m5.large")
  *                 .build());
  * 
  *         
@@ -59,16 +60,17 @@ import javax.annotation.Nullable;
  *         // and execute a single action that affects them all. Due to the triggers
  *         // map, the null_resource will be replaced each time the instance ids
  *         // change, and thus the remote-exec provisioner will be re-run.
- *         var clusterResource = new Resource(&#34;clusterResource&#34;, ResourceArgs.builder()        
- *             .triggers(Map.of(&#34;cluster_instance_ids&#34;, StdFunctions.join(JoinArgs.builder()
- *                 .separator(&#34;,&#34;)
- *                 .input(cluster.stream().map(element -&gt; element.id()).collect(toList()))
+ *         var clusterResource = new Resource("clusterResource", ResourceArgs.builder()        
+ *             .triggers(Map.of("cluster_instance_ids", StdFunctions.join(JoinArgs.builder()
+ *                 .separator(",")
+ *                 .input(cluster.stream().map(element -> element.id()).collect(toList()))
  *                 .build()).result()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
