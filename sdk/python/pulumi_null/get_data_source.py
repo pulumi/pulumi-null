@@ -48,13 +48,11 @@ class GetDataSourceResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.""")
     def id(self) -> str:
         """
         This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.
         """
-        warnings.warn("""This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.""", DeprecationWarning)
-        pulumi.log.warn("""id is deprecated: This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.""")
-
         return pulumi.get(self, "id")
 
     @property
