@@ -18,7 +18,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v1/go/aws"
+//	"github.com/pulumi/pulumi-aws/sdk/go/aws"
 //	"github.com/pulumi/pulumi-null/sdk/go/null"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -26,13 +26,13 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// var cluster []*index.Instance
+// var cluster []*aws.Instance
 //
 //	for index := 0; index < 3; index++ {
 //	    key0 := index
 //	    _ := index
 //
-// __res, err := index.NewInstance(ctx, fmt.Sprintf("cluster-%v", key0), &index.InstanceArgs{
+// __res, err := aws.NewInstance(ctx, fmt.Sprintf("cluster-%v", key0), &aws.InstanceArgs{
 // Ami: "ami-0dcc1e21636832c5d",
 // InstanceType: "m5.large",
 // })
@@ -41,13 +41,9 @@ import (
 // }
 // cluster = append(cluster, __res)
 // }
-// invokeJoin, err := std.Join(ctx, var splat0 []interface{}
-// for _, val0 := range cluster {
-// splat0 = append(splat0, val0.Id)
-// }
-// &std.JoinArgs{
+// invokeJoin, err := std.Join(ctx, &std.JoinArgs{
 // Separator: ",",
-// Input: splat0,
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:22,19-32),
 // }, nil)
 // if err != nil {
 // return err
