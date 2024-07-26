@@ -58,7 +58,7 @@ import (
 // // change, and thus the remote-exec provisioner will be re-run.
 // _, err = null.NewResource(ctx, "cluster", &null.ResourceArgs{
 // Triggers: pulumi.StringMap{
-// "cluster_instance_ids": invokeJoin.Result,
+// "cluster_instance_ids": pulumi.String(invokeJoin.Result),
 // },
 // })
 // if err != nil {
