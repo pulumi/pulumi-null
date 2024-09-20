@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  */
 export function getDataSource(args?: GetDataSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetDataSourceResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("null:index/getDataSource:getDataSource", {
         "hasComputedDefault": args.hasComputedDefault,
@@ -59,7 +58,12 @@ export interface GetDataSourceResult {
  * ## Example Usage
  */
 export function getDataSourceOutput(args?: GetDataSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataSourceResult> {
-    return pulumi.output(args).apply((a: any) => getDataSource(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("null:index/getDataSource:getDataSource", {
+        "hasComputedDefault": args.hasComputedDefault,
+        "inputs": args.inputs,
+    }, opts);
 }
 
 /**
