@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -112,9 +117,6 @@ def get_data_source(has_computed_default: Optional[str] = None,
         inputs=pulumi.get(__ret__, 'inputs'),
         outputs=pulumi.get(__ret__, 'outputs'),
         random=pulumi.get(__ret__, 'random'))
-
-
-@_utilities.lift_output_func(get_data_source)
 def get_data_source_output(has_computed_default: Optional[pulumi.Input[Optional[str]]] = None,
                            inputs: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataSourceResult]:
@@ -125,4 +127,14 @@ def get_data_source_output(has_computed_default: Optional[pulumi.Input[Optional[
     :param str has_computed_default: If set, its literal value will be stored and returned. If not, its value defaults to `"default"`. This argument exists primarily for testing and has little practical use.
     :param Mapping[str, str] inputs: A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.
     """
-    ...
+    __args__ = dict()
+    __args__['hasComputedDefault'] = has_computed_default
+    __args__['inputs'] = inputs
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('null:index/getDataSource:getDataSource', __args__, opts=opts, typ=GetDataSourceResult)
+    return __ret__.apply(lambda __response__: GetDataSourceResult(
+        has_computed_default=pulumi.get(__response__, 'has_computed_default'),
+        id=pulumi.get(__response__, 'id'),
+        inputs=pulumi.get(__response__, 'inputs'),
+        outputs=pulumi.get(__response__, 'outputs'),
+        random=pulumi.get(__response__, 'random')))
