@@ -57,7 +57,7 @@ export interface GetDataSourceResult {
 /**
  * ## Example Usage
  */
-export function getDataSourceOutput(args?: GetDataSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataSourceResult> {
+export function getDataSourceOutput(args?: GetDataSourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataSourceResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("null:index/getDataSource:getDataSource", {
