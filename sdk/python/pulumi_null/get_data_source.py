@@ -119,7 +119,7 @@ def get_data_source(has_computed_default: Optional[str] = None,
         random=pulumi.get(__ret__, 'random'))
 def get_data_source_output(has_computed_default: Optional[pulumi.Input[Optional[str]]] = None,
                            inputs: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataSourceResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataSourceResult]:
     """
     ## Example Usage
 
@@ -130,7 +130,7 @@ def get_data_source_output(has_computed_default: Optional[pulumi.Input[Optional[
     __args__ = dict()
     __args__['hasComputedDefault'] = has_computed_default
     __args__['inputs'] = inputs
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('null:index/getDataSource:getDataSource', __args__, opts=opts, typ=GetDataSourceResult)
     return __ret__.apply(lambda __response__: GetDataSourceResult(
         has_computed_default=pulumi.get(__response__, 'has_computed_default'),
