@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.null_.Utilities;
 import com.pulumi.null_.inputs.GetDataSourceArgs;
 import com.pulumi.null_.inputs.GetDataSourcePlainArgs;
@@ -47,6 +48,13 @@ public final class NullFunctions {
      * 
      */
     public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("null:index/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("null:index/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
     }
     /**
