@@ -66,6 +66,9 @@ class _ResourceState:
 
 
 class Resource(pulumi.CustomResource):
+
+    pulumi_type = "null:index/resource:Resource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
