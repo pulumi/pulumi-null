@@ -65,10 +65,8 @@ class _ResourceState:
         pulumi.set(self, "triggers", value)
 
 
+@pulumi.type_token("null:index/resource:Resource")
 class Resource(pulumi.CustomResource):
-
-    pulumi_type = "null:index/resource:Resource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
