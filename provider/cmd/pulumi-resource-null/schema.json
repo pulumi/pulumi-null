@@ -155,7 +155,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:null"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:null/terraformConfig",
