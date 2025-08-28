@@ -67,7 +67,7 @@ export class Resource extends pulumi.CustomResource {
     /**
      * A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
      */
-    public readonly triggers!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly triggers: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Resource resource with the given unique name, arguments, and options.
@@ -82,10 +82,10 @@ export class Resource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceState | undefined;
-            resourceInputs["triggers"] = state ? state.triggers : undefined;
+            resourceInputs["triggers"] = state?.triggers;
         } else {
             const args = argsOrState as ResourceArgs | undefined;
-            resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["triggers"] = args?.triggers;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Resource.__pulumiType, name, resourceInputs, opts);
