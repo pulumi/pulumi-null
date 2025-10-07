@@ -43,7 +43,7 @@ namespace Pulumi.Null
         private Dictionary<string, string>? _inputs;
 
         /// <summary>
-        /// A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.
+        /// A map of arbitrary strings that is copied into the `Outputs` attribute, and accessible directly for interpolation.
         /// </summary>
         public Dictionary<string, string> Inputs
         {
@@ -69,7 +69,7 @@ namespace Pulumi.Null
         private InputMap<string>? _inputs;
 
         /// <summary>
-        /// A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.
+        /// A map of arbitrary strings that is copied into the `Outputs` attribute, and accessible directly for interpolation.
         /// </summary>
         public InputMap<string> Inputs
         {
@@ -96,11 +96,11 @@ namespace Pulumi.Null
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.
+        /// A map of arbitrary strings that is copied into the `Outputs` attribute, and accessible directly for interpolation.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Inputs;
         /// <summary>
-        /// After the data source is "read", a copy of the `inputs` map.
+        /// After the data source is "read", a copy of the `Inputs` map.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Outputs;
         public readonly string Random;
