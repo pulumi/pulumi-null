@@ -105,7 +105,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.\n"
+                        "description": "A map of arbitrary strings that is copied into the \u003cspan pulumi-lang-nodejs=\"`outputs`\" pulumi-lang-dotnet=\"`Outputs`\" pulumi-lang-go=\"`outputs`\" pulumi-lang-python=\"`outputs`\" pulumi-lang-yaml=\"`outputs`\" pulumi-lang-java=\"`outputs`\"\u003e`outputs`\u003c/span\u003e attribute, and accessible directly for interpolation.\n"
                     }
                 },
                 "type": "object"
@@ -126,14 +126,14 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.\n",
+                        "description": "A map of arbitrary strings that is copied into the \u003cspan pulumi-lang-nodejs=\"`outputs`\" pulumi-lang-dotnet=\"`Outputs`\" pulumi-lang-go=\"`outputs`\" pulumi-lang-python=\"`outputs`\" pulumi-lang-yaml=\"`outputs`\" pulumi-lang-java=\"`outputs`\"\u003e`outputs`\u003c/span\u003e attribute, and accessible directly for interpolation.\n",
                         "type": "object"
                     },
                     "outputs": {
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "After the data source is \"read\", a copy of the `inputs` map.\n",
+                        "description": "After the data source is \"read\", a copy of the \u003cspan pulumi-lang-nodejs=\"`inputs`\" pulumi-lang-dotnet=\"`Inputs`\" pulumi-lang-go=\"`inputs`\" pulumi-lang-python=\"`inputs`\" pulumi-lang-yaml=\"`inputs`\" pulumi-lang-java=\"`inputs`\"\u003e`inputs`\u003c/span\u003e map.\n",
                         "type": "object"
                     },
                     "random": {
