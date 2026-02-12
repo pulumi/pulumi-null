@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `Resource` resource implements the standard resource lifecycle but takes no further action. On Terraform 1.4 and later, use the `terraformData` resource type instead. Terraform 1.9 and later support the `moved` configuration block from `Resource` to `terraformData`.
+//
+// The `triggers` argument allows specifying an arbitrary set of values that, when changed, will cause the resource to be replaced.
+//
 // ## Example Usage
 //
 // ```go
@@ -18,9 +22,11 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-aws/sdk/go/aws"
 //	"github.com/pulumi/pulumi-null/sdk/go/null"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

@@ -79,6 +79,9 @@ class GetDataSourceResult:
     @_builtins.property
     @pulumi.getter
     def random(self) -> _builtins.str:
+        """
+        A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.
+        """
         return pulumi.get(self, "random")
 
 
@@ -99,7 +102,11 @@ def get_data_source(has_computed_default: Optional[_builtins.str] = None,
                     inputs: Optional[Mapping[str, _builtins.str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataSourceResult:
     """
-    ## Example Usage
+    The `get_data_source` data source implements the standard data source lifecycle but does not
+    interact with any external APIs.
+
+    Historically, the `get_data_source` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+    same can now be achieved using locals or the terraform_data resource type in Terraform 1.4 and later.
 
 
     :param _builtins.str has_computed_default: If set, its literal value will be stored and returned. If not, its value defaults to `"default"`. This argument exists primarily for testing and has little practical use.
@@ -121,7 +128,11 @@ def get_data_source_output(has_computed_default: Optional[pulumi.Input[Optional[
                            inputs: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataSourceResult]:
     """
-    ## Example Usage
+    The `get_data_source` data source implements the standard data source lifecycle but does not
+    interact with any external APIs.
+
+    Historically, the `get_data_source` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+    same can now be achieved using locals or the terraform_data resource type in Terraform 1.4 and later.
 
 
     :param _builtins.str has_computed_default: If set, its literal value will be stored and returned. If not, its value defaults to `"default"`. This argument exists primarily for testing and has little practical use.

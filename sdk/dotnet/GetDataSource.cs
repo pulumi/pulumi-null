@@ -12,19 +12,31 @@ namespace Pulumi.Null
     public static class GetDataSource
     {
         /// <summary>
-        /// ## Example Usage
+        /// The `null.getDataSource` data source implements the standard data source lifecycle but does not
+        /// interact with any external APIs.
+        /// 
+        /// Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+        /// same can now be achieved using locals or the TerraformData resource type in Terraform 1.4 and later.
         /// </summary>
         public static Task<GetDataSourceResult> InvokeAsync(GetDataSourceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataSourceResult>("null:index/getDataSource:getDataSource", args ?? new GetDataSourceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## Example Usage
+        /// The `null.getDataSource` data source implements the standard data source lifecycle but does not
+        /// interact with any external APIs.
+        /// 
+        /// Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+        /// same can now be achieved using locals or the TerraformData resource type in Terraform 1.4 and later.
         /// </summary>
         public static Output<GetDataSourceResult> Invoke(GetDataSourceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDataSourceResult>("null:index/getDataSource:getDataSource", args ?? new GetDataSourceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## Example Usage
+        /// The `null.getDataSource` data source implements the standard data source lifecycle but does not
+        /// interact with any external APIs.
+        /// 
+        /// Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+        /// same can now be achieved using locals or the TerraformData resource type in Terraform 1.4 and later.
         /// </summary>
         public static Output<GetDataSourceResult> Invoke(GetDataSourceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDataSourceResult>("null:index/getDataSource:getDataSource", args ?? new GetDataSourceInvokeArgs(), options.WithDefaults());
@@ -103,6 +115,9 @@ namespace Pulumi.Null
         /// After the data source is "read", a copy of the `Inputs` map.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Outputs;
+        /// <summary>
+        /// A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.
+        /// </summary>
         public readonly string Random;
 
         [OutputConstructor]

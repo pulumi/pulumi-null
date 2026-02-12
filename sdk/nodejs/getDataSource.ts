@@ -5,7 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
+ * The `null.getDataSource` data source implements the standard data source lifecycle but does not
+ * interact with any external APIs.
+ *
+ * Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+ * same can now be achieved using locals or the terraformData resource type in Terraform 1.4 and later.
  */
 export function getDataSource(args?: GetDataSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetDataSourceResult> {
     args = args || {};
@@ -52,10 +56,17 @@ export interface GetDataSourceResult {
      * After the data source is "read", a copy of the `inputs` map.
      */
     readonly outputs: {[key: string]: string};
+    /**
+     * A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.
+     */
     readonly random: string;
 }
 /**
- * ## Example Usage
+ * The `null.getDataSource` data source implements the standard data source lifecycle but does not
+ * interact with any external APIs.
+ *
+ * Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+ * same can now be achieved using locals or the terraformData resource type in Terraform 1.4 and later.
  */
 export function getDataSourceOutput(args?: GetDataSourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataSourceResult> {
     args = args || {};
