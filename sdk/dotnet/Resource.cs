@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Null
 {
     /// <summary>
+    /// The `null.Resource` resource implements the standard resource lifecycle but takes no further action. On Terraform 1.4 and later, use the `TerraformData` resource type instead. Terraform 1.9 and later support the `Moved` configuration block from `null.Resource` to `TerraformData`.
+    /// 
+    /// The `Triggers` argument allows specifying an arbitrary set of values that, when changed, will cause the resource to be replaced.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

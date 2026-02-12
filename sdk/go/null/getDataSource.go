@@ -11,7 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// The `getDataSource` data source implements the standard data source lifecycle but does not
+// interact with any external APIs.
+//
+// Historically, the `getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+// same can now be achieved using locals or the terraformData resource type in Terraform 1.4 and later.
 func GetDataSource(ctx *pulumi.Context, args *GetDataSourceArgs, opts ...pulumi.InvokeOption) (*GetDataSourceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDataSourceResult
@@ -42,7 +46,8 @@ type GetDataSourceResult struct {
 	Inputs map[string]string `pulumi:"inputs"`
 	// After the data source is "read", a copy of the `inputs` map.
 	Outputs map[string]string `pulumi:"outputs"`
-	Random  string            `pulumi:"random"`
+	// A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.
+	Random string `pulumi:"random"`
 }
 
 func GetDataSourceOutput(ctx *pulumi.Context, args GetDataSourceOutputArgs, opts ...pulumi.InvokeOption) GetDataSourceResultOutput {
@@ -103,6 +108,7 @@ func (o GetDataSourceResultOutput) Outputs() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetDataSourceResult) map[string]string { return v.Outputs }).(pulumi.StringMapOutput)
 }
 
+// A random value. This is primarily for testing and has little practical use; prefer the hashicorp/random provider for more practical random number use-cases.
 func (o GetDataSourceResultOutput) Random() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourceResult) string { return v.Random }).(pulumi.StringOutput)
 }

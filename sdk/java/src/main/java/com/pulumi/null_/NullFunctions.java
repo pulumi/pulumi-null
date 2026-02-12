@@ -16,49 +16,77 @@ import java.util.concurrent.CompletableFuture;
 
 public final class NullFunctions {
     /**
-     * ## Example Usage
+     * The `null.getDataSource` data source implements the standard data source lifecycle but does not
+     * interact with any external APIs.
+     * 
+     * Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+     * same can now be achieved using locals or the terraformData resource type in Terraform 1.4 and later.
      * 
      */
     public static Output<GetDataSourceResult> getDataSource() {
         return getDataSource(GetDataSourceArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
+     * The `null.getDataSource` data source implements the standard data source lifecycle but does not
+     * interact with any external APIs.
+     * 
+     * Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+     * same can now be achieved using locals or the terraformData resource type in Terraform 1.4 and later.
      * 
      */
     public static CompletableFuture<GetDataSourceResult> getDataSourcePlain() {
         return getDataSourcePlain(GetDataSourcePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
+     * The `null.getDataSource` data source implements the standard data source lifecycle but does not
+     * interact with any external APIs.
+     * 
+     * Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+     * same can now be achieved using locals or the terraformData resource type in Terraform 1.4 and later.
      * 
      */
     public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args) {
         return getDataSource(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
+     * The `null.getDataSource` data source implements the standard data source lifecycle but does not
+     * interact with any external APIs.
+     * 
+     * Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+     * same can now be achieved using locals or the terraformData resource type in Terraform 1.4 and later.
      * 
      */
     public static CompletableFuture<GetDataSourceResult> getDataSourcePlain(GetDataSourcePlainArgs args) {
         return getDataSourcePlain(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
+     * The `null.getDataSource` data source implements the standard data source lifecycle but does not
+     * interact with any external APIs.
+     * 
+     * Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+     * same can now be achieved using locals or the terraformData resource type in Terraform 1.4 and later.
      * 
      */
     public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("null:index/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
+     * The `null.getDataSource` data source implements the standard data source lifecycle but does not
+     * interact with any external APIs.
+     * 
+     * Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+     * same can now be achieved using locals or the terraformData resource type in Terraform 1.4 and later.
      * 
      */
     public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("null:index/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
+     * The `null.getDataSource` data source implements the standard data source lifecycle but does not
+     * interact with any external APIs.
+     * 
+     * Historically, the `null.getDataSource` was typically used to construct intermediate values to re-use elsewhere in configuration. The
+     * same can now be achieved using locals or the terraformData resource type in Terraform 1.4 and later.
      * 
      */
     public static CompletableFuture<GetDataSourceResult> getDataSourcePlain(GetDataSourcePlainArgs args, InvokeOptions options) {

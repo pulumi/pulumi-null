@@ -73,6 +73,10 @@ class Resource(pulumi.CustomResource):
                  triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        The `Resource` resource implements the standard resource lifecycle but takes no further action. On Terraform 1.4 and later, use the `terraform_data` resource type instead. Terraform 1.9 and later support the `moved` configuration block from `Resource` to `terraform_data`.
+
+        The `triggers` argument allows specifying an arbitrary set of values that, when changed, will cause the resource to be replaced.
+
         ## Example Usage
 
         ```python
@@ -111,6 +115,10 @@ class Resource(pulumi.CustomResource):
                  args: Optional[ResourceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The `Resource` resource implements the standard resource lifecycle but takes no further action. On Terraform 1.4 and later, use the `terraform_data` resource type instead. Terraform 1.9 and later support the `moved` configuration block from `Resource` to `terraform_data`.
+
+        The `triggers` argument allows specifying an arbitrary set of values that, when changed, will cause the resource to be replaced.
+
         ## Example Usage
 
         ```python
