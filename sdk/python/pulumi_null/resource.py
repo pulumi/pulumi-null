@@ -22,6 +22,7 @@ class ResourceArgs:
                  triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Resource resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] triggers: A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
         """
         if triggers is not None:
@@ -46,6 +47,7 @@ class _ResourceState:
                  triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Resource resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] triggers: A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
         """
         if triggers is not None:
@@ -104,6 +106,7 @@ class Resource(pulumi.CustomResource):
         })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] triggers: A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
@@ -145,6 +148,7 @@ class Resource(pulumi.CustomResource):
                 input=[__item["id"] for __item in cluster]).result,
         })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ResourceArgs args: The arguments to use to populate this resource's properties.
