@@ -44,11 +44,11 @@ namespace Pulumi.Null
     ///     // and execute a single action that affects them all. Due to the triggers
     ///     // map, the null_resource will be replaced each time the instance ids
     ///     // change, and thus the remote-exec provisioner will be re-run.
-    ///     var clusterResource = new Null.Resource("cluster", new()
+    ///     var clusterResource = new Null.Index.Resource("cluster", new()
     ///     {
     ///         Triggers = 
     ///         {
-    ///             { "cluster_instance_ids", Std.Join.Invoke(new()
+    ///             { "cluster_instance_ids", Std.Index.Join.Invoke(new()
     ///             {
     ///                 Separator = ",",
     ///                 Input = cluster.Select(__item =&gt; __item.Id).ToList(),

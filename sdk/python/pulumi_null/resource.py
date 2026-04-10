@@ -89,7 +89,7 @@ class Resource(pulumi.CustomResource):
 
         cluster = []
         for range in [{"value": i} for i in range(0, 3)]:
-            cluster.append(aws.index.Instance(f"cluster-{range['value']}",
+            cluster.append(aws.Instance(f"cluster-{range['value']}",
                 ami=ami-0dcc1e21636832c5d,
                 instance_type=m5.large))
         # The primary use-case for the null resource is as a do-nothing container
@@ -132,7 +132,7 @@ class Resource(pulumi.CustomResource):
 
         cluster = []
         for range in [{"value": i} for i in range(0, 3)]:
-            cluster.append(aws.index.Instance(f"cluster-{range['value']}",
+            cluster.append(aws.Instance(f"cluster-{range['value']}",
                 ami=ami-0dcc1e21636832c5d,
                 instance_type=m5.large))
         # The primary use-case for the null resource is as a do-nothing container
