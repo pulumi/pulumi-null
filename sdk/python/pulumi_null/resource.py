@@ -84,6 +84,7 @@ class Resource(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_aws as aws
+        import pulumi_command as command
         import pulumi_null as null
         import pulumi_std as std
 
@@ -104,6 +105,15 @@ class Resource(pulumi.CustomResource):
             "cluster_instance_ids": std.join(separator=",",
                 input=[__item["id"] for __item in cluster]).result,
         })
+        cluster_resource_provisioner0 = command.remote.Command("clusterResourceProvisioner0",
+            connection={
+                host: [__item.public_ip for __item in cluster][0],
+            },
+            create=std.join(separator=
+        ,
+                input=[fbootstrap-cluster.sh {std.join(separator= ,
+                    input=[__item.private_ip for __item in cluster]).result}]).result,
+            opts = pulumi.ResourceOptions(depends_on=[cluster_resource]))
         ```
 
 
@@ -127,6 +137,7 @@ class Resource(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_aws as aws
+        import pulumi_command as command
         import pulumi_null as null
         import pulumi_std as std
 
@@ -147,6 +158,15 @@ class Resource(pulumi.CustomResource):
             "cluster_instance_ids": std.join(separator=",",
                 input=[__item["id"] for __item in cluster]).result,
         })
+        cluster_resource_provisioner0 = command.remote.Command("clusterResourceProvisioner0",
+            connection={
+                host: [__item.public_ip for __item in cluster][0],
+            },
+            create=std.join(separator=
+        ,
+                input=[fbootstrap-cluster.sh {std.join(separator= ,
+                    input=[__item.private_ip for __item in cluster]).result}]).result,
+            opts = pulumi.ResourceOptions(depends_on=[cluster_resource]))
         ```
 
 
