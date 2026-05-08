@@ -124,8 +124,8 @@ def get_data_source(has_computed_default: Optional[_builtins.str] = None,
         inputs=pulumi.get(__ret__, 'inputs'),
         outputs=pulumi.get(__ret__, 'outputs'),
         random=pulumi.get(__ret__, 'random'))
-def get_data_source_output(has_computed_default: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           inputs: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_data_source_output(has_computed_default: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           inputs: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataSourceResult]:
     """
     The `get_data_source` data source implements the standard data source lifecycle but does not
