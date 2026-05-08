@@ -25,6 +25,7 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-aws/sdk/go/aws"
+//	"github.com/pulumi/pulumi-command/sdk/go/command/remote"
 //	"github.com/pulumi/pulumi-null/sdk/go/null"
 //	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -62,11 +63,30 @@ import (
 // // and execute a single action that affects them all. Due to the triggers
 // // map, the null_resource will be replaced each time the instance ids
 // // change, and thus the remote-exec provisioner will be re-run.
-// _, err = null.NewResource(ctx, "cluster", &null.ResourceArgs{
+// clusterResource, err := null.NewResource(ctx, "cluster", &null.ResourceArgs{
 // Triggers: pulumi.StringMap{
 // "cluster_instance_ids": pulumi.String(invokeJoin.Result),
 // },
 // })
+// if err != nil {
+// return err
+// }
+// _, err = remote.NewCommand(ctx, "clusterResourceProvisioner0", &remote.CommandArgs{
+// Connection: map[string]interface{}{
+// "host": %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:31,20-39)[0],
+// },
+// Create: std.Join(ctx, &std.JoinArgs{
+// Separator: "\n",
+// Input: []string{
+// fmt.Sprintf("bootstrap-cluster.sh %v", std.Join(ctx, {
+// Separator: " ",
+// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:37,19-39),
+// }, nil).Result),
+// },
+// }, nil).Result,
+// }, pulumi.DependsOn([]pulumi.Resource{
+// clusterResource,
+// }))
 // if err != nil {
 // return err
 // }

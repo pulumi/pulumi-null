@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as _null from "@pulumi/null";
  * import * as aws from "@pulumi/aws";
+ * import * as command from "@pulumi/command";
  * import * as std from "@pulumi/std";
  *
  * const cluster: aws.index.Instance[] = [];
@@ -38,6 +39,20 @@ import * as utilities from "./utilities";
  *         input: cluster.map(__item => __item.id),
  *     }).then(invoke => invoke.result),
  * }});
+ * const clusterResourceProvisioner0 = new command.remote.Command("clusterResourceProvisioner0", {
+ *     connection: {
+ *         host: cluster.map(__item => __item.publicIp)[0],
+ *     },
+ *     create: std.join({
+ *         separator: "\n",
+ *         input: [`bootstrap-cluster.sh ${std.join({
+ *             separator: " ",
+ *             input: cluster.map(__item => __item.privateIp),
+ *         }).result}`],
+ *     }).result,
+ * }, {
+ *     dependsOn: [clusterResource],
+ * });
  * ```
  */
 export class Resource extends pulumi.CustomResource {
@@ -103,7 +118,7 @@ export interface ResourceState {
     /**
      * A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
      */
-    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -113,5 +128,5 @@ export interface ResourceArgs {
     /**
      * A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
      */
-    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

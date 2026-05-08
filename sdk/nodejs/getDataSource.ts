@@ -84,9 +84,9 @@ export interface GetDataSourceOutputArgs {
     /**
      * If set, its literal value will be stored and returned. If not, its value defaults to `"default"`. This argument exists primarily for testing and has little practical use.
      */
-    hasComputedDefault?: pulumi.Input<string>;
+    hasComputedDefault?: pulumi.Input<string | undefined>;
     /**
      * A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.
      */
-    inputs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    inputs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

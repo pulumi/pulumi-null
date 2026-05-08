@@ -35,9 +35,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.null.ResourceArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.JoinArgs;
+ * import com.pulumi.command.remote.Command;
+ * import com.pulumi.command.remote.CommandArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -71,6 +74,21 @@ import javax.annotation.Nullable;
  *                 .input(cluster.stream().map(element -> element.id()).collect(toList()))
  *                 .build()).result()))
  *             .build());
+ * 
+ *         var clusterResourceProvisioner0 = new Command("clusterResourceProvisioner0", CommandArgs.builder()
+ *             .connection(Map.of("host", cluster.stream().map(element -> element.publicIp()).collect(toList())[0]))
+ *             .create(StdFunctions.join(JoinArgs.builder()
+ *                 .separator("""
+ * 
+ *                 """)
+ *                 .input(String.format("bootstrap-cluster.sh %s", StdFunctions.join(JoinArgs.builder()
+ *                     .separator(" ")
+ *                     .input(cluster.stream().map(element -> element.privateIp()).collect(toList()))
+ *                     .build()).result()))
+ *                 .build()).result())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(Arrays.asList(clusterResource))
+ *                 .build());
  * 
  *     }
  * }

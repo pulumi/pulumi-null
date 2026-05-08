@@ -21,16 +21,17 @@ namespace Pulumi.Null
     /// using System.Linq;
     /// using Pulumi;
     /// using Aws = Pulumi.Aws;
+    /// using Command = Pulumi.Command;
     /// using Null = Pulumi.Null;
     /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cluster = new List&lt;Aws.Index.Instance&gt;();
+    ///     var cluster = new List&lt;Aws.Instance&gt;();
     ///     for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
-    ///         cluster.Add(new Aws.Index.Instance($"cluster-{range.Value}", new()
+    ///         cluster.Add(new Aws.Instance($"cluster-{range.Value}", new()
     ///         {
     ///             Ami = "ami-0dcc1e21636832c5d",
     ///             InstanceType = "m5.large",
@@ -44,15 +45,42 @@ namespace Pulumi.Null
     ///     // and execute a single action that affects them all. Due to the triggers
     ///     // map, the null_resource will be replaced each time the instance ids
     ///     // change, and thus the remote-exec provisioner will be re-run.
-    ///     var clusterResource = new Null.Index.Resource("cluster", new()
+    ///     var clusterResource = new Null.Resource("cluster", new()
     ///     {
     ///         Triggers = 
     ///         {
-    ///             { "cluster_instance_ids", Std.Index.Join.Invoke(new()
+    ///             { "cluster_instance_ids", Std.Join.Invoke(new()
     ///             {
     ///                 Separator = ",",
     ///                 Input = cluster.Select(__item =&gt; __item.Id).ToList(),
     ///             }).Apply(invoke =&gt; invoke.Result) },
+    ///         },
+    ///     });
+    /// 
+    ///     var clusterResourceProvisioner0 = new Command.Remote.Command("clusterResourceProvisioner0", new()
+    ///     {
+    ///         Connection = 
+    ///         {
+    ///             { "host", cluster.Select(__item =&gt; __item.PublicIp).ToList()[0] },
+    ///         },
+    ///         Create = Std.Join.Invoke(new()
+    ///         {
+    ///             Separator = @"
+    /// ",
+    ///             Input = new[]
+    ///             {
+    ///                 $"bootstrap-cluster.sh {Std.Join.Invoke(new()
+    ///                 {
+    ///                     Separator = " ",
+    ///                     Input = cluster.Select(__item =&gt; __item.PrivateIp).ToList(),
+    ///                 }).Result}",
+    ///             },
+    ///         }).Result,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             clusterResource,
     ///         },
     ///     });
     /// 

@@ -19,7 +19,7 @@ __all__ = ['ResourceArgs', 'Resource']
 @pulumi.input_type
 class ResourceArgs:
     def __init__(__self__, *,
-                 triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Resource resource.
 
@@ -30,21 +30,21 @@ class ResourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def triggers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def triggers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
         """
         return pulumi.get(self, "triggers")
 
     @triggers.setter
-    def triggers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def triggers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "triggers", value)
 
 
 @pulumi.input_type
 class _ResourceState:
     def __init__(__self__, *,
-                 triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Resource resources.
 
@@ -55,14 +55,14 @@ class _ResourceState:
 
     @_builtins.property
     @pulumi.getter
-    def triggers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def triggers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
         """
         return pulumi.get(self, "triggers")
 
     @triggers.setter
-    def triggers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def triggers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "triggers", value)
 
 
@@ -72,7 +72,7 @@ class Resource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         The `Resource` resource implements the standard resource lifecycle but takes no further action. On Terraform 1.4 and later, use the `terraform_data` resource type instead. Terraform 1.9 and later support the `moved` configuration block from `Resource` to `terraform_data`.
@@ -83,11 +83,13 @@ class Resource(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_aws as aws
+        import pulumi_command as command
         import pulumi_null as null
         import pulumi_std as std
 
-        cluster = []
+        cluster: list[Any] = []
         for range in [{"value": i} for i in range(0, 3)]:
             cluster.append(aws.Instance(f"cluster-{range['value']}",
                 ami=ami-0dcc1e21636832c5d,
@@ -104,6 +106,15 @@ class Resource(pulumi.CustomResource):
             "cluster_instance_ids": std.join(separator=",",
                 input=[__item["id"] for __item in cluster]).result,
         })
+        cluster_resource_provisioner0 = command.remote.Command("clusterResourceProvisioner0",
+            connection={
+                host: [__item.public_ip for __item in cluster][0],
+            },
+            create=std.join(separator=
+        ,
+                input=[fbootstrap-cluster.sh {std.join(separator= ,
+                    input=[__item.private_ip for __item in cluster]).result}]).result,
+            opts = pulumi.ResourceOptions(depends_on=[cluster_resource]))
         ```
 
 
@@ -126,11 +137,13 @@ class Resource(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_aws as aws
+        import pulumi_command as command
         import pulumi_null as null
         import pulumi_std as std
 
-        cluster = []
+        cluster: list[Any] = []
         for range in [{"value": i} for i in range(0, 3)]:
             cluster.append(aws.Instance(f"cluster-{range['value']}",
                 ami=ami-0dcc1e21636832c5d,
@@ -147,6 +160,15 @@ class Resource(pulumi.CustomResource):
             "cluster_instance_ids": std.join(separator=",",
                 input=[__item["id"] for __item in cluster]).result,
         })
+        cluster_resource_provisioner0 = command.remote.Command("clusterResourceProvisioner0",
+            connection={
+                host: [__item.public_ip for __item in cluster][0],
+            },
+            create=std.join(separator=
+        ,
+                input=[fbootstrap-cluster.sh {std.join(separator= ,
+                    input=[__item.private_ip for __item in cluster]).result}]).result,
+            opts = pulumi.ResourceOptions(depends_on=[cluster_resource]))
         ```
 
 
@@ -165,7 +187,7 @@ class Resource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -186,7 +208,7 @@ class Resource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Resource':
+            triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Resource':
         """
         Get an existing Resource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
