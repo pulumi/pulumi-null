@@ -12,6 +12,11 @@
         }
     },
     "auto-settings": {},
+    "default-resource-schema-fixups": {
+        "resources": {
+            "null_resource": {}
+        }
+    },
     "renames": {
         "resources": {
             "null:index/resource:Resource": "null_resource"
