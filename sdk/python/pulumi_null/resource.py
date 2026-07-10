@@ -89,9 +89,9 @@ class Resource(pulumi.CustomResource):
         import pulumi_null as null
         import pulumi_std as std
 
-        cluster: list[Any] = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            cluster.append(aws.Instance(f"cluster-{range['value']}",
+        cluster: list[aws.Instance] = []
+        for cluster_range in [{"value": i} for i in range(0, 3)]:
+            cluster.append(aws.Instance(f"cluster-{cluster_range['value']}",
                 ami=ami-0dcc1e21636832c5d,
                 instance_type=m5.large))
         # The primary use-case for the null resource is as a do-nothing container
@@ -143,9 +143,9 @@ class Resource(pulumi.CustomResource):
         import pulumi_null as null
         import pulumi_std as std
 
-        cluster: list[Any] = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            cluster.append(aws.Instance(f"cluster-{range['value']}",
+        cluster: list[aws.Instance] = []
+        for cluster_range in [{"value": i} for i in range(0, 3)]:
+            cluster.append(aws.Instance(f"cluster-{cluster_range['value']}",
                 ami=ami-0dcc1e21636832c5d,
                 instance_type=m5.large))
         # The primary use-case for the null resource is as a do-nothing container

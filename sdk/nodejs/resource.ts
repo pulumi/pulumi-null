@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  * import * as std from "@pulumi/std";
  *
  * const cluster: aws.index.Instance[] = [];
- * for (const range = {value: 0}; range.value < 3; range.value++) {
- *     cluster.push(new aws.index.Instance(`cluster-${range.value}`, {
+ * for (let range = 0; range < 3; range++) {
+ *     cluster.push(new aws.index.Instance(`cluster-${range}`, {
  *         ami: "ami-0dcc1e21636832c5d",
  *         instanceType: "m5.large",
  *     }));
