@@ -37,7 +37,6 @@ import (
 //
 //	for index := 0; index < 3; index++ {
 //	    key0 := index
-//	    _ := index
 //
 // __res, err := aws.NewInstance(ctx, fmt.Sprintf("cluster-%v", key0), &aws.InstanceArgs{
 // Ami: "ami-0dcc1e21636832c5d",
