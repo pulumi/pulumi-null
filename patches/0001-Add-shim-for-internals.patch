@@ -6,7 +6,7 @@ Subject: [PATCH] Add shim for internals
 
 diff --git a/pulumi-shim/pf.go b/pulumi-shim/pf.go
 new file mode 100644
-index 0000000..75ad10e
+index 000000000000..75ad10eb0356
 --- /dev/null
 +++ b/pulumi-shim/pf.go
 @@ -0,0 +1,10 @@
