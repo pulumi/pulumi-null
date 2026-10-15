@@ -71,19 +71,19 @@ import javax.annotation.Nullable;
  *         var clusterResource = new Resource("clusterResource", ResourceArgs.builder()
  *             .triggers(Map.of("cluster_instance_ids", StdFunctions.join(JoinArgs.builder()
  *                 .separator(",")
- *                 .input(cluster.stream().map(element -> element.id()).collect(toList()))
+ *                 .input(cluster.stream().map(element -> element.get("id")).collect(toList()))
  *                 .build()).result()))
  *             .build());
  * 
  *         var clusterResourceProvisioner0 = new Command("clusterResourceProvisioner0", CommandArgs.builder()
- *             .connection(Map.of("host", cluster.stream().map(element -> element.publicIp()).collect(toList())[0]))
+ *             .connection(Map.of("host", cluster.stream().map(element -> element.get("publicIp")).collect(toList())[0]))
  *             .create(StdFunctions.join(JoinArgs.builder()
  *                 .separator("""
  * 
  *                 """)
  *                 .input(String.format("bootstrap-cluster.sh %s", StdFunctions.join(JoinArgs.builder()
  *                     .separator(" ")
- *                     .input(cluster.stream().map(element -> element.privateIp()).collect(toList()))
+ *                     .input(cluster.stream().map(element -> element.get("privateIp")).collect(toList()))
  *                     .build()).result()))
  *                 .build()).result())
  *             .build(), CustomResourceOptions.builder()
