@@ -20,11 +20,10 @@ public final class GetDataSourceResult {
     /**
      * @return This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.
      * 
-     * @deprecated
-     * This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.
+     * @deprecated This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.
      * 
      */
-    @Deprecated /* This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version. */
+    @Deprecated
     private String id;
     /**
      * @return A map of arbitrary strings that is copied into the `outputs` attribute, and accessible directly for interpolation.
@@ -53,11 +52,10 @@ public final class GetDataSourceResult {
     /**
      * @return This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.
      * 
-     * @deprecated
-     * This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.
+     * @deprecated This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version.
      * 
      */
-    @Deprecated /* This attribute is only present for some legacy compatibility issues and should not be used. It will be removed in a future version. */
+    @Deprecated
     public String id() {
         return this.id;
     }
