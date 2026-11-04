@@ -143,6 +143,12 @@ func (ResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceState)(nil)).Elem()
 }
 
+// ResourceExists checks whether an existing Resource resource with the given ID exists.
+func ResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("null:index/resource:Resource", id, state, "", opts...)
+}
+
 type resourceArgs struct {
 	// A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
 	Triggers map[string]string `pulumi:"triggers"`
